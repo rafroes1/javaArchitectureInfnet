@@ -1,0 +1,2 @@
+s; chinela; 07; 17.00; true; Crocs; 38;
+f; pokemon; 08; 33.00; false; Junichi Masuda; animacao;
