@@ -1,5 +1,9 @@
 package br.edu.infnet.appvenda.model.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TFilme")
 public class Filme extends Produto {
 	
 	private String diretor;

@@ -2,6 +2,8 @@ package br.edu.infnet.appvenda;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -34,13 +36,33 @@ public class ProdutoLoader implements ApplicationRunner {
 			
 			Produto produto = builder.build();
 			
-			service.addProduto(produto);
+			//service.addProduto(produto); //comente se nao quiser adicionar
 			
 			line = reader.readLine();
 		}
 		
+		//print em todos os produtos
 		for(Produto produto: service.getProdutoList()) {
 			System.out.println("[Produto" + produto.getClassStringed() + "]: " + produto.toString());
+		}
+		
+		//print em todos os produtos de cada vendedor
+		List<Integer> idVendedor = new ArrayList<Integer>();
+		
+		for(Produto produto: service.getProdutoList()) {
+			
+			if(!idVendedor.contains(produto.getVendedor().getId())) {
+				
+				System.out.println(String.format("Lista dos produtos de (%d) -> %s",
+						produto.getVendedor().getId(),
+						produto.getVendedor().getNome()));
+				
+				for(Produto p: service.getProductFromVendedor(produto.getVendedor())) {
+					System.out.println("[Produto] -> " + p.getDescricao());
+				}
+				
+				idVendedor.add(produto.getVendedor().getId());
+			}
 		}
 		
 		reader.close();

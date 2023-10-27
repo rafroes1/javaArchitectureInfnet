@@ -10,7 +10,6 @@ import br.edu.infnet.appvenda.model.repository.VendedorRepository;
 
 @Service
 public class VendedorService {
-	//TODO: Fazer para as outras classes
 	
 	@Autowired
 	private VendedorRepository repository;

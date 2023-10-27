@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvenda.model.domain.Filme;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.service.FilmeService;
 
 @Order(3)
@@ -36,8 +37,9 @@ public class FilmeLoader implements ApplicationRunner {
 			filme.setEstoque(Boolean.parseBoolean(data[3].trim()));
 			filme.setDiretor(data[4]);
 			filme.setGenero(data[5]);
+			filme.setVendedor(new Vendedor(Integer.valueOf(data[6].trim())));
 			
-			service.addFilme(filme);
+			//service.addFilme(filme); //comente se nao quiser adicionar
 			
 			line = reader.readLine();
 		}

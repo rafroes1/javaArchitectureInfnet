@@ -14,8 +14,24 @@ public class Vendedor {
 	private String nome;
 	private String cpf;
 	private String email;
-	@Transient //desconsidera esse campo na criação da tabela
+	@OneToMany 	//@Transient anotação serve para desconsiderar esse campo na criação da tabela
+	@JoinColumn(name = "idVendedor")
 	private List<Produto> produtos;
+	
+	
+	public Vendedor() {}
+	
+	public Vendedor(Integer id){
+		this.id = id;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;
@@ -51,6 +67,6 @@ public class Vendedor {
 
 	@Override
 	public String toString() {
-		return String.format("%s - %s - %s", this.nome, this.cpf, this.email);
+		return String.format("%d - %s - %s - %s", this.id, this.nome, this.cpf, this.email);
 	}
 }

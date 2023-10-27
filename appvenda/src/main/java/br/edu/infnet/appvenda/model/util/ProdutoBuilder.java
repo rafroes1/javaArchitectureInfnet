@@ -3,6 +3,7 @@ package br.edu.infnet.appvenda.model.util;
 import br.edu.infnet.appvenda.model.domain.Filme;
 import br.edu.infnet.appvenda.model.domain.Produto;
 import br.edu.infnet.appvenda.model.domain.Sapato;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
 
 public class ProdutoBuilder {
 	private String[] data;
@@ -31,6 +32,7 @@ public class ProdutoBuilder {
 		filme.setEstoque(Boolean.parseBoolean(this.data[4].trim()));
 		filme.setDiretor(this.data[5]);
 		filme.setGenero(this.data[6]);
+		filme.setVendedor(new Vendedor(Integer.valueOf(data[7].trim())));
 		return filme;
 	}
 	
@@ -42,6 +44,7 @@ public class ProdutoBuilder {
 		sapato.setEstoque(Boolean.parseBoolean(this.data[4].trim()));
 		sapato.setMarca(this.data[5]);
 		sapato.setTamanho(Integer.valueOf(this.data[6].trim()));
+		sapato.setVendedor(new Vendedor(Integer.valueOf(data[7].trim())));
 		return  sapato;
 	}
 

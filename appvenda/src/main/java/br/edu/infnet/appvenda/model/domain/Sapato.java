@@ -1,5 +1,9 @@
 package br.edu.infnet.appvenda.model.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TSapato")
 public class Sapato extends Produto {
 	
 	private String marca;

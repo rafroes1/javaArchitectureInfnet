@@ -1,22 +1,23 @@
 package br.edu.infnet.appvenda.model.service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appvenda.model.domain.Sapato;
+import br.edu.infnet.appvenda.model.repository.SapatoRepository;
 
 @Service
 public class SapatoService {
-	private Map<Integer, Sapato> mapaSapato = new HashMap<Integer, Sapato>();
+	@Autowired
+	private SapatoRepository repository;
 	
 	public void addSapato(Sapato sapato) {
-		mapaSapato.put(sapato.getCodigo(), sapato);
+		repository.save(sapato);
 	}
 	
 	public Collection<Sapato> getSapatoList(){
-		return mapaSapato.values();
+		return (Collection<Sapato>) repository.findAll();
 	}
 }

@@ -10,6 +10,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import br.edu.infnet.appvenda.model.domain.Sapato;
+import br.edu.infnet.appvenda.model.domain.Vendedor;
 import br.edu.infnet.appvenda.model.service.SapatoService;
 
 @Order(2)
@@ -36,8 +37,9 @@ public class SapatoLoader implements ApplicationRunner {
 			sapato.setEstoque(Boolean.parseBoolean(data[3].trim()));
 			sapato.setMarca(data[4]);
 			sapato.setTamanho(Integer.valueOf(data[5].trim()));
+			sapato.setVendedor(new Vendedor(Integer.valueOf(data[6].trim())));
 			
-			service.addSapato(sapato);
+			//service.addSapato(sapato); //comente se nao quiser adicionar
 			
 			line = reader.readLine();
 		}
