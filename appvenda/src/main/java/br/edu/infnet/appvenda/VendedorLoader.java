@@ -33,7 +33,7 @@ public class VendedorLoader implements ApplicationRunner {
 			vendedor.setCpf(data[1]);
 			vendedor.setEmail(data[2]);
 			
-			//service.addVendedor(vendedor); //comente se nao quiser adicionar
+			service.addVendedor(vendedor); //comente se nao quiser adicionar
 			
 			line = reader.readLine();
 		}

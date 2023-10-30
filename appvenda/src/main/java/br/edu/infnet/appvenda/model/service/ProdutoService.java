@@ -22,7 +22,6 @@ public class ProdutoService {
 		return (Collection<Produto>) repository.findAll();
 	}
 	
-	//TODO: Fazer para sapato e filme
 	public Collection<Produto> getProductFromVendedor(Vendedor vendedor){
 		return (Collection<Produto>) repository.getProductFromVendedor(vendedor.getId());
 	}

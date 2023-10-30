@@ -39,7 +39,7 @@ public class FilmeLoader implements ApplicationRunner {
 			filme.setGenero(data[5]);
 			filme.setVendedor(new Vendedor(Integer.valueOf(data[6].trim())));
 			
-			//service.addFilme(filme); //comente se nao quiser adicionar
+			service.addFilme(filme); //comente se nao quiser adicionar
 			
 			line = reader.readLine();
 		}

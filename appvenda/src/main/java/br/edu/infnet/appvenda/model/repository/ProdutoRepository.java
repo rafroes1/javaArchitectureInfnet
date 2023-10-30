@@ -11,7 +11,6 @@ import br.edu.infnet.appvenda.model.domain.Produto;
 @Repository
 public interface ProdutoRepository extends CrudRepository<Produto, Integer>{
 
-	//TODO: Fazer para sapato e filme
 	@Query("from Produto p where p.vendedor.id = :vendedorId") //dois pontos significa um parametro
 	Collection<Produto> getProductFromVendedor(Integer vendedorId);
 }

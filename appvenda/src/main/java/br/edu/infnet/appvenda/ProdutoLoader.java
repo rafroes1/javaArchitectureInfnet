@@ -36,7 +36,7 @@ public class ProdutoLoader implements ApplicationRunner {
 			
 			Produto produto = builder.build();
 			
-			//service.addProduto(produto); //comente se nao quiser adicionar
+			service.addProduto(produto); //comente se nao quiser adicionar
 			
 			line = reader.readLine();
 		}
