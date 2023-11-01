@@ -20,4 +20,8 @@ public class SapatoService {
 	public Collection<Sapato> getSapatoList(){
 		return (Collection<Sapato>) repository.findAll();
 	}
+	
+	public long count() {
+		return repository.count();
+	}
 }

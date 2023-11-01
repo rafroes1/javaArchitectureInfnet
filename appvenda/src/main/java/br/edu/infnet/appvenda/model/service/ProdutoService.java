@@ -25,4 +25,8 @@ public class ProdutoService {
 	public Collection<Produto> getProductFromVendedor(Vendedor vendedor){
 		return (Collection<Produto>) repository.getProductFromVendedor(vendedor.getId());
 	}
+	
+	public long count() {
+		return repository.count();
+	}
 }

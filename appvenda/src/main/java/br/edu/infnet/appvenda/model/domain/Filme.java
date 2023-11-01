@@ -1,11 +1,13 @@
 package br.edu.infnet.appvenda.model.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TFilme")
 public class Filme extends Produto {
 	
+	@Size(min = 2, max = 50, message = "O diretor deve ter entre {min} e {max} caracteres.")
 	private String diretor;
 	private String genero;
 	

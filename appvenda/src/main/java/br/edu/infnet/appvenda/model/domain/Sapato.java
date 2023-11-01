@@ -1,12 +1,15 @@
 package br.edu.infnet.appvenda.model.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "TSapato")
 public class Sapato extends Produto {
 	
+	
 	private String marca;
+	@Positive
 	private int tamanho;
 	
 	public String getMarca() {

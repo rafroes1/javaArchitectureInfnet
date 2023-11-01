@@ -20,4 +20,8 @@ public class FilmeService {
 	public Collection<Filme> getFilmeList(){
 		return (Collection<Filme>) repository.findAll();
 	}
+	
+	public long count() {
+		return repository.count();
+	}
 }

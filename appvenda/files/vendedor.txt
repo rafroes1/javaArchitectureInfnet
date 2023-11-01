@@ -1,4 +1,4 @@
-Elberth Moraes; 11111111111; elberth@email.com
-Jonh Doe; 22222222222; jonh@email.com
-Jane Doe; 33333333333; jane@email.com
-Zeca Loiro; 44444444444; zeca@email.com
+Elberth Moraes;111.111.111-11; elberth@email.com
+Jonh Doe;222.222.222-22; jonh@email.com
+Jane Doe;333.333.333-33; jane@email.com
+Zeca Loiro;444.444.444-44; zeca@email.com

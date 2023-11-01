@@ -3,16 +3,27 @@ package br.edu.infnet.appvenda.model.domain;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
+//@Table(name = "TVendedor") //caso nao queria que a table tenha o nome exatamente igual a da classe voce pode usar essa anotação pra redefinir
 @Entity //cria essa classe como tabela
-@Table(name = "TVendedor") //caso nao queria que a table tenha o nome exatamente igual a da classe voce pode usar essa anotação pra redefinir
+@Table(name = "TVendedor", 
+	uniqueConstraints = {
+			@UniqueConstraint(columnNames = {"cpf"}),
+			@UniqueConstraint(columnNames = {"email"})
+			}
+)
 public class Vendedor {
 	
 	@Id //primary key id
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment do primary key
 	private Integer id;
+	@Size(min = 2, max = 50)
 	private String nome;
+	@Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}")
 	private String cpf;
+	@Size(min = 2, max = 50)
+	@Column(unique = true)
 	private String email;
 	@OneToMany 	//@Transient anotação serve para desconsiderar esse campo na criação da tabela
 	@JoinColumn(name = "idVendedor")

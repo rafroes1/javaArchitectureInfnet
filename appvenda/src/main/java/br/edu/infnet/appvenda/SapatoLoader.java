@@ -39,7 +39,7 @@ public class SapatoLoader implements ApplicationRunner {
 			sapato.setTamanho(Integer.valueOf(data[5].trim()));
 			sapato.setVendedor(new Vendedor(Integer.valueOf(data[6].trim())));
 			
-			service.addSapato(sapato); //comente se nao quiser adicionar
+			service.addSapato(sapato);
 			
 			line = reader.readLine();
 		}
