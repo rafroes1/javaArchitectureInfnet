@@ -24,4 +24,8 @@ public class FilmeService {
 	public long count() {
 		return repository.count();
 	}
+	
+	public void excluir(Integer id) {
+		repository.deleteById(id);
+	}
 }

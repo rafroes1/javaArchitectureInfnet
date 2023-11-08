@@ -36,7 +36,7 @@ public class VendedorLoader implements ApplicationRunner {
 			vendedor.setEmail(data[2]);
 			vendedor.setEndereco(new Endereco(data[3].trim()));
 			
-			try { //TODO: Tratar exceção para todas as outras classes loaders
+			try {
 				service.addVendedor(vendedor); //comente se nao quiser adicionar
 			} catch (ConstraintViolationException e) {
 				System.out.println("[VENDEDOR] " + vendedor);

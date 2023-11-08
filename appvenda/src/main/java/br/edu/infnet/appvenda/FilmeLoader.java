@@ -3,6 +3,8 @@ package br.edu.infnet.appvenda;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -39,7 +41,12 @@ public class FilmeLoader implements ApplicationRunner {
 			filme.setGenero(data[5]);
 			filme.setVendedor(new Vendedor(Integer.valueOf(data[6].trim())));
 			
-			service.addFilme(filme);
+			try { 
+				service.addFilme(filme);
+			} catch (ConstraintViolationException e) {
+				System.out.println("[FILME] " + filme);
+				FileLogger.logException("[FILME] " + filme + " - " + e.getMessage());
+			}
 			
 			line = reader.readLine();
 		}

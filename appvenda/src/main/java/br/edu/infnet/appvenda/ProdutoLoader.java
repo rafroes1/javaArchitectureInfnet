@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -37,6 +39,13 @@ public class ProdutoLoader implements ApplicationRunner {
 			Produto produto = builder.build();
 			
 			service.addProduto(produto);
+			
+			try { 
+				service.addProduto(produto);
+			} catch (ConstraintViolationException e) {
+				System.out.println("[PRODUTO] " + produto);
+				FileLogger.logException("[PRODUTO] " + produto + " - " + e.getMessage());
+			}
 			
 			line = reader.readLine();
 		}

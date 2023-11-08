@@ -32,28 +32,4 @@ public class AppController {
 		
 		return "index";
 	}
-	
-	@GetMapping(value = "/produto/lista")
-	public String getProdutoList(Model model) {
-		model.addAttribute("listagem", pService.getProdutoList());
-		model.addAttribute("titulo", "Produtos:");
-
-		return showHome(model);
-	}
-	
-	@GetMapping(value = "/sapato/lista")
-	public String getSapatoList(Model model) {
-		model.addAttribute("listagem", sService.getSapatoList());
-		model.addAttribute("titulo", "Sapatos:");
-
-		return showHome(model);
-	}
-	
-	@GetMapping(value = "/filme/lista")
-	public String getFilmeList(Model model) {
-		model.addAttribute("listagem", fService.getFilmeList());
-		model.addAttribute("titulo", "Filmes:");
-
-		return showHome(model);
-	}
 }

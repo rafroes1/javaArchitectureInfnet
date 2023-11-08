@@ -3,6 +3,8 @@ package br.edu.infnet.appvenda;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -39,7 +41,12 @@ public class SapatoLoader implements ApplicationRunner {
 			sapato.setTamanho(Integer.valueOf(data[5].trim()));
 			sapato.setVendedor(new Vendedor(Integer.valueOf(data[6].trim())));
 			
-			service.addSapato(sapato);
+			try { 
+				service.addSapato(sapato);
+			} catch (ConstraintViolationException e) {
+				System.out.println("[SAPATO] " + sapato);
+				FileLogger.logException("[SAPATO] " + sapato + " - " + e.getMessage());
+			}
 			
 			line = reader.readLine();
 		}
