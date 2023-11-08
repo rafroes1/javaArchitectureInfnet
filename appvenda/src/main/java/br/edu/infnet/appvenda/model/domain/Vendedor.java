@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-//@Table(name = "TVendedor") //caso nao queria que a table tenha o nome exatamente igual a da classe voce pode usar essa anotação pra redefinir
 @Entity //cria essa classe como tabela
 @Table(name = "TVendedor", 
 	uniqueConstraints = {
@@ -28,12 +27,22 @@ public class Vendedor {
 	@OneToMany 	//@Transient anotação serve para desconsiderar esse campo na criação da tabela
 	@JoinColumn(name = "idVendedor")
 	private List<Produto> produtos;
-	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idEndereco")
+	private Endereco endereco;
 	
 	public Vendedor() {}
 	
 	public Vendedor(Integer id){
 		this.id = id;
+	}
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 	public Integer getId() {
@@ -78,6 +87,6 @@ public class Vendedor {
 
 	@Override
 	public String toString() {
-		return String.format("%d - %s - %s - %s", this.id, this.nome, this.cpf, this.email);
+		return String.format("id: %d - nome: %s - cpf: %s - email: %s - endereço: %s", this.id, this.nome, this.cpf, this.email, this.endereco);
 	}
 }

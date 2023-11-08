@@ -33,14 +33,6 @@ public class AppController {
 		return "index";
 	}
 	
-	@GetMapping(value = "/vendedor/lista")
-	public String getVendedorList(Model model) {
-		model.addAttribute("listagem", vService.getVendedorList());
-		model.addAttribute("titulo", "Vendedores:");
-
-		return showHome(model);
-	}
-	
 	@GetMapping(value = "/produto/lista")
 	public String getProdutoList(Model model) {
 		model.addAttribute("listagem", pService.getProdutoList());

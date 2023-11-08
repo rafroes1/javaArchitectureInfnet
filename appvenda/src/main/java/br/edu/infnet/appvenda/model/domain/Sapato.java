@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
-@Table(name = "TSapato")
+@Table(name = "TSapato")  //caso nao queria que a table tenha o nome exatamente igual a da classe voce pode usar essa anotação pra redefinir
 public class Sapato extends Produto {
 	
 	

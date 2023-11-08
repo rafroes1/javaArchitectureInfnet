@@ -2,6 +2,8 @@ package br.edu.infnet.appvenda;
 
 import java.io.*;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.*;
 import org.springframework.core.annotation.Order;
@@ -32,8 +34,14 @@ public class VendedorLoader implements ApplicationRunner {
 			vendedor.setNome(data[0]);
 			vendedor.setCpf(data[1]);
 			vendedor.setEmail(data[2]);
+			vendedor.setEndereco(new Endereco(data[3].trim()));
 			
-			service.addVendedor(vendedor); //comente se nao quiser adicionar
+			try { //TODO: Tratar exceção para todas as outras classes loaders
+				service.addVendedor(vendedor); //comente se nao quiser adicionar
+			} catch (ConstraintViolationException e) {
+				System.out.println("[VENDEDOR] " + vendedor);
+				FileLogger.logException("[VENDEDOR] " + vendedor + " - " + e.getMessage());
+			}
 			
 			line = reader.readLine();
 		}
