@@ -24,7 +24,7 @@ public class Vendedor {
 	@Size(min = 2, max = 50)
 	@Column(unique = true)
 	private String email;
-	@OneToMany 	//@Transient anotação serve para desconsiderar esse campo na criação da tabela
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "idVendedor")
 	private List<Produto> produtos;
 	@OneToOne(cascade = CascadeType.PERSIST)

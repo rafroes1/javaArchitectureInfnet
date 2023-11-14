@@ -3,6 +3,7 @@ package br.edu.infnet.appvenda.model.service;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appvenda.clients.IEnderecoClient;
@@ -18,14 +19,19 @@ public class VendedorService {
 	@Autowired
 	private IEnderecoClient enderecoClient;
 	
+	//TODO: fazer para produto e seus filho
+	public Vendedor pesquisar(String cpf) {
+		return repository.findByCpf(cpf);
+	}
+	
 	public void addVendedor(Vendedor vendedor) {
 		Endereco endereco = enderecoClient.buscarCep(vendedor.getEndereco().getCep());
 		vendedor.setEndereco(endereco);
 		repository.save(vendedor);
 	}
-	
+	//TODO: Criar para produto e para cada filho um criterio de ordenação -> olhar vendedor repository
 	public Collection<Vendedor> getVendedorList(){
-		return (Collection<Vendedor>) repository.findAll();
+		return (Collection<Vendedor>) repository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
 	}
 	
 	public long count() {
