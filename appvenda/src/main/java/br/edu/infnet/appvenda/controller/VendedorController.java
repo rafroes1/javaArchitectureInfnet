@@ -18,7 +18,6 @@ public class VendedorController {
 	@Autowired
 	private VendedorService service;
 	
-	//TODO: fazer para produto e seus filhos
 	@GetMapping(value = "/vendedor/pesquisar")
 	public String pesquisar(Model model, String campoBusca) {
 		Vendedor vendedor = service.pesquisar(campoBusca);

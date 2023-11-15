@@ -19,7 +19,6 @@ public class VendedorService {
 	@Autowired
 	private IEnderecoClient enderecoClient;
 	
-	//TODO: fazer para produto e seus filho
 	public Vendedor pesquisar(String cpf) {
 		return repository.findByCpf(cpf);
 	}
@@ -29,7 +28,7 @@ public class VendedorService {
 		vendedor.setEndereco(endereco);
 		repository.save(vendedor);
 	}
-	//TODO: Criar para produto e para cada filho um criterio de ordenação -> olhar vendedor repository
+	
 	public Collection<Vendedor> getVendedorList(){
 		return (Collection<Vendedor>) repository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
 	}
